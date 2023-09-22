@@ -286,7 +286,42 @@ arbolBinario.insert(5)
 arbolBinario.insert(2)
 arbolBinario.recorrerArbolEnOrden()
 
+// from array of sorted nums to binary search tree
 
+function TreeNode(val, left, right) {
+    this.val = (val===undefined ? 0 : val)
+    this.left = (left===undefined ? null : left)
+    this.right = (right===undefined ? null : right)
+}
+var sortedArrayToBST = function(nums) {
+  return returnValuesFromBinarieTree(nums, 0, nums.length-1)
+};
+
+function returnValuesFromBinarieTree(nums, inicio, fin){
+  if(inicio > fin) return null
+  let mid = Math.ceil((inicio + fin)/2)
+  console.log(mid)
+  let root = new TreeNode(nums[mid])
+  root.left=returnValuesFromBinarieTree(nums, inicio, mid-1)
+  root.right=returnValuesFromBinarieTree(nums, mid+1, fin)
+  return root
+
+
+
+}
+
+let tempArray = []
+    let finalArray = []
+    let lastArray = []
+   
+
+    function recursive(num){
+        if(num == 1){
+            tempArray.push([1])
+        }
+
+    }
+    console.log(tempArray)
 
 // class Node {
 //     constructor(value){
@@ -593,3 +628,104 @@ amazonTest(related)
       var numGroups = giftingGroup(matrix);
       console.log("Número mínimo de grupos necesarios:", numGroups);
       
+let nums = [1,1,2]
+let set = new Set(nums)
+console.log(set)
+
+
+
+// merge 2 arrys:
+var merge = function(nums1, m, nums2, n) {
+    for(let j= 0,i = m; j < n; i++, j++) nums1[i] = nums2[j];
+    nums1.sort((a,b)=>a-b)
+}
+
+// triangulo de pascal sin recursividad ( while )
+let numRows = 2
+let triangle = [[1]]
+    if(numRows ==1) return triangle
+    let row = 0 
+
+    while(triangle.length < numRows){
+        let prevRow = triangle[row]
+
+        let currentRow = new Array(prevRow.length + 1).fill(1)
+        console.log('arria al for')
+        for(let i = 1; i < currentRow.length - 1; i++){
+            console.log('entre al for')
+            let leftValueAbove = prevRow[i-1]
+            let rightValueAbove = prevRow[i]
+            console.log(leftValueAbove)
+            console.log(rightValueAbove)
+            currentRow[i] = leftValueAbove + rightValueAbove
+
+
+        }
+        triangle.push(currentRow)
+        row++
+    }
+    console.log(triangle)
+    return triangle
+
+
+
+
+    function pascalTriangle(numsRow){
+        let triangle = [[1]]
+        if(numsRow == 1) return triangle 
+        let row = 0
+        while(newRow.length < numsRow){
+            let prevRow = triangle[row]
+            let newRow = new Array(prevRow.length + 1).fill(1)
+
+        }
+
+    };
+
+    var maxProfit = function(prices) {
+
+        if(prices == null || prices.length <= 1) return 0;
+    let minBuy = prices[0];
+    let profit = 0;
+    for(let i = 1; i < prices.length; i++) {
+        minBuy = Math.min(minBuy, prices[i]);
+        profit = Math.max(profit, prices[i] - minBuy);
+        console.log(minBuy)
+        console.log(profit)
+    }
+    return profit;
+       
+    };
+
+    maxProfit([2,4,1])
+
+    // hashMap con if reducido
+
+    // let hashMap = {}
+    // for(let i = 0; i<nums.length; i++){
+    //    hashMap[nums[i]] ? hashMap[nums[i]] += 1 : hashMap[nums[i]] = 1
+    // }
+
+    //HashMap aun más simplificado:
+    // let hashMap = {}
+    // for(let i = 0; i<nums.length; i++){
+    //    hashMap[nums[i]] = (hashMap[nums[i]] || 0) + 1
+    // }
+
+    // En el caso de que se deba encontrar el minimo repetido y no sabes cuanto es el minimo de veces que debe ser repetido:
+    // let elementoMinimo
+    // let minimValue=Infinity
+    // for(let key in hashMap){
+    //     if(hashMap[key] < minimValue){
+    //         minimValue = hashMap[key]
+    //         elementoMinimo = key
+    //     }
+    // }
+    // return elementoMinimo
+
+    //En el caso que si sepas como en el problema de singleNumber que debes encontrar el que se repite solo una vez
+    // for (let key in hashMap) {
+    //     if (hashMap[key] === 1) {
+    //       return parseInt(key);
+    //     }
+    //   }
