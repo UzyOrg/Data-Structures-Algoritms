@@ -729,3 +729,67 @@ let triangle = [[1]]
     //       return parseInt(key);
     //     }
     //   }
+
+//Encontrar el elemento que más se repite sin crear más espacio
+
+    var majorityElement = function(nums) {
+        //Se crea la variable solucion y el contador
+        let sol =0, count = 0
+        for(let i = 0; i < nums.length; i++){
+            //si contador esta en ceros solucion se iguala a el numero que esta en el array en ese momento
+            //y contador suma 1
+            if(count==0){
+                sol = nums[i]
+                count++
+            //si sol es igual al numero que esta en la posicion sube el contador
+            }else if(sol == nums[i]){
+                count++
+            }else{
+                //si no lo es decremente y hasta que llegue a cero se cambia el valor al que esta
+                //Pero siempre terminará con el numero que más se repiteya que siempre o quedara con 1 más
+                //o se inicializara de nuevo
+                count --
+            }
+        }
+        console.log(sol)
+        return sol
+    };
+
+    majorityElement([5,5,5,5,4,4,4,5,4])
+
+    let var1 = 4 | 2
+    console.log(var1)
+
+    let ones= 0
+    let twos= 0
+    let ar = [2,2,3,2]
+    ar.forEach(number=>{
+        twos |= ones & number
+        ones ^= number
+
+        const commonBitMask = ~(ones & twos);
+        ones &= commonBitMask;
+        twos &= commonBitMask;
+    })
+    console.log(ones)
+    console.log(twos)
+
+
+
+    //Pascal triangle 
+
+    //Inicializamos el triangulo en [[1]]
+    //retornamos el triangulo si el numero de filas nos llega igual a 1
+    //Creamos la variable row y la inicializamos en cero 
+    //Con esto ya podemos crear el ciclo while para empezar a poblar el triangulo
+    //mientras que la longitud del triangulo sea menor al numero de filas por parametro
+    //Inicializamos la variable prevRow a la fila actual del triangulo o triangulo[row]  ( que será cero la primera vez)
+    //creamos el currentRow que será un nuevo array con la longitud de la fila previa + 1 y llena de unos
+    //Creamos el ciclo for para rellenar dicho array
+    //asignamos al valor anterior de la izquierda de la fila anterior y el de la derecha como prevRow[i-1] y prevRow[i]
+    // despues sumamos los 2 valores y se lo asignamos a la fila que se creo en la fila que va y aumentamos row++ fuera del for ( solo row++ )
+    // despues retornamos triangle
+
+    
+
+
